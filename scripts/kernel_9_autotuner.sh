@@ -20,8 +20,8 @@ OUTPUT="../benchmark_results/kernel_9_autotune_results.txt"
 # Clear the output file
 echo "" > $OUTPUT
 
-# Set GPU to use
-export DEVICE="2"
+# 设置目标 GPU 编号（P100 为 0，若多卡环境请按实际修改）
+export DEVICE="0"
 
 TOTAL_CONFIGS="$(( ${#NUM_THREADS_VALUES[@]} * ${#BK_VALUES[@]} * ${#TM_VALUES[@]} * ${#TN_VALUES[@]} * ${#BM_VALUES[@]} * ${#BN_VALUES[@]} ))"
 CONFIG_NUM=0
