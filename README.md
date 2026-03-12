@@ -1,8 +1,31 @@
 # P100 SGEMM 从零实现与逐步优化
 
-在 **NVIDIA Tesla P100（sm\_60, Pascal 架构）** 上从零手写并逐步优化单精度矩阵乘法（SGEMM）的个人复现项目。
-参考自 [siboehm/SGEMM\_CUDA](https://github.com/siboehm/SGEMM_CUDA)，针对 P100 硬件特性重新调整了 tiling 参数，
-**以 cuBLAS 为 100% 性能基准**，衡量各优化内核的效率。
+在 **NVIDIA Tesla P100（sm\_60, Pascal 架构）** 上从零手写并逐步优化单精度矩阵乘法（SGEMM）的个人复现学习项目。
+参考并且学习了来自simon大神的blog[siboehm/SGEMM\_CUDA](https://github.com/siboehm/SGEMM_CUDA)，依次应用 Global Memory 合并访问、Shared Memory 分块缓存、1D/2D Thread Tiling 与寄存器外积累加、float4 向量化加载及 Warp 级 Tiling，最终性能达 cuBLAS 的 91.6%（5701 GFLOPS vs 6226 GFLOPS，矩阵规模 4096×4096）。使用 Nsight Compute 对每个版本采集 DRAM 带宽利用率、SM 占用率等指标，结合 Roofline Model 定位各阶段计算/访存瓶颈，验证优化路径从 Memory Bound 向 Compute Bound 的转变。 并且针对 P100 硬件特性重新调整了 tiling 参数，**以 cuBLAS 为 100% 性能基准**，衡量各优化内核的效率。
+
+
+---
+
+## Benchmark 结果
+
+测试环境：**NVIDIA Tesla P100-SXM2-16GB**，矩阵规模 M=N=K=4096，重复 50 次取平均。
+以 cuBLAS（内核 0）为 100% 性能基准。
+
+| 内核 | GFLOPS | 占 cuBLAS % |
+|---|---:|---:|
+| K1 Naive | 71 | 1.1% |
+| K2 GMEM Coalesce | 373 | 6.0% |
+| K3 SMEM Cache | 1689 | 27.1% |
+| K4 1D Tiling | 2882 | 46.3% |
+| K5 2D Tiling | 4839 | 77.7% |
+| K6 Vectorize | 5587 | 89.7% |
+| K9 Autotuned | 5468 | 87.8% |
+| **K10 Warptiling** | **5701** | **91.6%** |
+| K0 cuBLAS | 6226 | 100% |
+
+![benchmark_result](benchmark_results/benchmark_result.png)
+
+---
 
 ---
 
@@ -203,39 +226,5 @@ bash scripts/kernel_10_autotuner.sh
 # 结果：benchmark_results/kernel_10_autotune_results.txt
 ```
 
----
 
-## Benchmark 结果
 
-测试环境：**NVIDIA Tesla P100-SXM2-16GB**，矩阵规模 M=N=K=4096，重复 50 次取平均。
-以 cuBLAS（内核 0）为 100% 性能基准。
-
-| 内核 | GFLOPS | 占 cuBLAS % |
-|---|---:|---:|
-| K1 Naive | 71 | 1.1% |
-| K2 GMEM Coalesce | 373 | 6.0% |
-| K3 SMEM Cache | 1689 | 27.1% |
-| K4 1D Tiling | 2882 | 46.3% |
-| K5 2D Tiling | 4839 | 77.7% |
-| K6 Vectorize | 5587 | 89.7% |
-| K9 Autotuned | 5468 | 87.8% |
-| **K10 Warptiling** | **5701** | **91.6%** |
-| K0 cuBLAS | 6226 | 100% |
-
-![benchmark_result](benchmark_results/benchmark_result.png)
-
----
-
-## 与 siboehm 原项目的主要差异
-
-| 方面 | 原项目（A6000, sm\_86） | 本项目（P100, sm\_60） |
-|---|---|---|
-| 目标 GPU | NVIDIA RTX A6000 | NVIDIA Tesla P100 |
-| Compute Capability | sm\_86 (Ampere) | sm\_60 (Pascal) |
-| 保留内核 | K1~K12 | K1~K6, K9, K10 |
-| 删除内核 | — | K7/K8（银行冲突）、K11/K12（双缓冲需要 sm\_80+ async copy） |
-| K9 BK 参数 | BK=16 | **BK=8**（减小 SMEM 压力，提升 SM 占用率） |
-| K10 块级分块 | BM=BN=128 | **BM=BN=64** |
-| K10 Warp 分块 | WM=WN=64, WNITER=4, TM=8 | **WM=WN=32, WNITER=2, TM=4** |
-| 性能基准 | cuBLAS（描述中提及） | **cuBLAS = 100%，benchmark.py 直接标注** |
-| benchmark 脚本 | gen\_benchmark\_results.sh + plot\_benchmark\_results.py | **benchmark.py（一键编译+测试+绘图）** |
