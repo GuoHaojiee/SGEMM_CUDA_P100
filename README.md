@@ -125,18 +125,22 @@ Ridge Point = 10,600 GFLOPS ÷ 720 GB/s ≈ 14.7 FLOP/Byte
 
 ### 环境依赖
 
-- CUDA Toolkit 11.x+（含 cuBLAS）
-- CMake ≥ 3.19
-- GCC 支持 C++20
-- Python 3.10+（仅 benchmark.py 需要：`pip install matplotlib`）
+- CUDA Toolkit 10.2+（含 cuBLAS）
+- CMake ≥ 3.19，或直接用 nvcc 命令行编译
+- GCC 4.8.5+（ppc64le / x86\_64 均可）
+- Python 3.6+（仅 benchmark.py 需要：`pip install matplotlib`）
 
 ### 快速开始
 
 ```bash
-# 1. 编译（Release 模式）
+# 1a. 编译（CMake，Release 模式）
 make build
 # 或手动：
 mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make -j$(nproc)
+
+# 1b. 直接用 nvcc 编译（CUDA 10.2 + gcc 4.8.5 / ppc64le 环境）
+mkdir -p build
+nvcc -O3 -arch=sm_60 -I src sgemm.cu src/runner.cu -lcublas -o build/sgemm
 
 # 2. 运行单个内核（以内核 10 为例）
 ./build/sgemm 10
@@ -203,9 +207,22 @@ bash scripts/kernel_10_autotuner.sh
 
 ## Benchmark 结果
 
-> 运行 `python3 benchmark.py` 后生成，cuBLAS = 100% 基准。
+测试环境：**NVIDIA Tesla P100-SXM2-16GB**，矩阵规模 M=N=K=4096，重复 50 次取平均。
+以 cuBLAS（内核 0）为 100% 性能基准。
 
-![benchmark_result](benchmark_result.png)
+| 内核 | GFLOPS | 占 cuBLAS % |
+|---|---:|---:|
+| K1 Naive | 71 | 1.1% |
+| K2 GMEM Coalesce | 373 | 6.0% |
+| K3 SMEM Cache | 1689 | 27.1% |
+| K4 1D Tiling | 2882 | 46.3% |
+| K5 2D Tiling | 4839 | 77.7% |
+| K6 Vectorize | 5587 | 89.7% |
+| K9 Autotuned | 5468 | 87.8% |
+| **K10 Warptiling** | **5701** | **91.6%** |
+| K0 cuBLAS | 6226 | 100% |
+
+![benchmark_result](benchmark_results/benchmark_result.png)
 
 ---
 

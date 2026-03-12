@@ -1,0 +1,270 @@
+=== kernel 0 ===
+Running kernel 0 on device 0.
+Device ID: 0
+    Name: Tesla P100-SXM2-16GB
+    Compute Capability: 6.0
+    memoryBusWidth: 4096
+    maxThreadsPerBlock: 1024
+    maxThreadsPerMultiProcessor: 2048
+    maxRegsPerBlock: 65536
+    maxRegsPerMultiProcessor: 65536
+    totalGlobalMem: 16280MB
+    sharedMemPerBlock: 48KB
+    sharedMemPerMultiprocessor: 64KB
+    totalConstMem: 64KB
+    l2CacheSize: 4096KB
+    multiProcessorCount: 56
+    Warp Size: 32
+Max size: 4096
+dimensions(m=n=k) 128, alpha: 0.5, beta: 3
+Average elapsed time: (0.000010) s, performance: (  418.7) GFLOPS. size: (128).
+dimensions(m=n=k) 256, alpha: 0.5, beta: 3
+Average elapsed time: (0.000019) s, performance: ( 1762.4) GFLOPS. size: (256).
+dimensions(m=n=k) 512, alpha: 0.5, beta: 3
+Average elapsed time: (0.000069) s, performance: ( 3904.5) GFLOPS. size: (512).
+dimensions(m=n=k) 1024, alpha: 0.5, beta: 3
+Average elapsed time: (0.000513) s, performance: ( 4189.2) GFLOPS. size: (1024).
+dimensions(m=n=k) 2048, alpha: 0.5, beta: 3
+Average elapsed time: (0.003227) s, performance: ( 5323.9) GFLOPS. size: (2048).
+dimensions(m=n=k) 4096, alpha: 0.5, beta: 3
+Average elapsed time: (0.022074) s, performance: ( 6226.3) GFLOPS. size: (4096).
+=== kernel 1 ===
+Running kernel 1 on device 0.
+Device ID: 0
+    Name: Tesla P100-SXM2-16GB
+    Compute Capability: 6.0
+    memoryBusWidth: 4096
+    maxThreadsPerBlock: 1024
+    maxThreadsPerMultiProcessor: 2048
+    maxRegsPerBlock: 65536
+    maxRegsPerMultiProcessor: 65536
+    totalGlobalMem: 16280MB
+    sharedMemPerBlock: 48KB
+    sharedMemPerMultiprocessor: 64KB
+    totalConstMem: 64KB
+    l2CacheSize: 4096KB
+    multiProcessorCount: 56
+    Warp Size: 32
+Max size: 4096
+dimensions(m=n=k) 128, alpha: 0.5, beta: 3
+Average elapsed time: (0.000170) s, performance: (   24.7) GFLOPS. size: (128).
+dimensions(m=n=k) 256, alpha: 0.5, beta: 3
+Average elapsed time: (0.000657) s, performance: (   51.1) GFLOPS. size: (256).
+dimensions(m=n=k) 512, alpha: 0.5, beta: 3
+Average elapsed time: (0.003165) s, performance: (   84.8) GFLOPS. size: (512).
+dimensions(m=n=k) 1024, alpha: 0.5, beta: 3
+Average elapsed time: (0.022940) s, performance: (   93.6) GFLOPS. size: (1024).
+dimensions(m=n=k) 2048, alpha: 0.5, beta: 3
+Average elapsed time: (0.199740) s, performance: (   86.0) GFLOPS. size: (2048).
+dimensions(m=n=k) 4096, alpha: 0.5, beta: 3
+Average elapsed time: (1.936770) s, performance: (   71.0) GFLOPS. size: (4096).
+=== kernel 2 ===
+Running kernel 2 on device 0.
+Device ID: 0
+    Name: Tesla P100-SXM2-16GB
+    Compute Capability: 6.0
+    memoryBusWidth: 4096
+    maxThreadsPerBlock: 1024
+    maxThreadsPerMultiProcessor: 2048
+    maxRegsPerBlock: 65536
+    maxRegsPerMultiProcessor: 65536
+    totalGlobalMem: 16280MB
+    sharedMemPerBlock: 48KB
+    sharedMemPerMultiprocessor: 64KB
+    totalConstMem: 64KB
+    l2CacheSize: 4096KB
+    multiProcessorCount: 56
+    Warp Size: 32
+Max size: 4096
+dimensions(m=n=k) 128, alpha: 0.5, beta: 3
+Average elapsed time: (0.000040) s, performance: (  105.0) GFLOPS. size: (128).
+dimensions(m=n=k) 256, alpha: 0.5, beta: 3
+Average elapsed time: (0.000151) s, performance: (  222.0) GFLOPS. size: (256).
+dimensions(m=n=k) 512, alpha: 0.5, beta: 3
+Average elapsed time: (0.000816) s, performance: (  329.1) GFLOPS. size: (512).
+dimensions(m=n=k) 1024, alpha: 0.5, beta: 3
+Average elapsed time: (0.005522) s, performance: (  388.9) GFLOPS. size: (1024).
+dimensions(m=n=k) 2048, alpha: 0.5, beta: 3
+Average elapsed time: (0.046500) s, performance: (  369.5) GFLOPS. size: (2048).
+dimensions(m=n=k) 4096, alpha: 0.5, beta: 3
+Average elapsed time: (0.368669) s, performance: (  372.8) GFLOPS. size: (4096).
+=== kernel 3 ===
+Running kernel 3 on device 0.
+Device ID: 0
+    Name: Tesla P100-SXM2-16GB
+    Compute Capability: 6.0
+    memoryBusWidth: 4096
+    maxThreadsPerBlock: 1024
+    maxThreadsPerMultiProcessor: 2048
+    maxRegsPerBlock: 65536
+    maxRegsPerMultiProcessor: 65536
+    totalGlobalMem: 16280MB
+    sharedMemPerBlock: 48KB
+    sharedMemPerMultiprocessor: 64KB
+    totalConstMem: 64KB
+    l2CacheSize: 4096KB
+    multiProcessorCount: 56
+    Warp Size: 32
+Max size: 4096
+dimensions(m=n=k) 128, alpha: 0.5, beta: 3
+Average elapsed time: (0.000013) s, performance: (  333.6) GFLOPS. size: (128).
+dimensions(m=n=k) 256, alpha: 0.5, beta: 3
+Average elapsed time: (0.000039) s, performance: (  852.2) GFLOPS. size: (256).
+dimensions(m=n=k) 512, alpha: 0.5, beta: 3
+Average elapsed time: (0.000176) s, performance: ( 1521.2) GFLOPS. size: (512).
+dimensions(m=n=k) 1024, alpha: 0.5, beta: 3
+Average elapsed time: (0.001316) s, performance: ( 1632.4) GFLOPS. size: (1024).
+dimensions(m=n=k) 2048, alpha: 0.5, beta: 3
+Average elapsed time: (0.010291) s, performance: ( 1669.5) GFLOPS. size: (2048).
+dimensions(m=n=k) 4096, alpha: 0.5, beta: 3
+Average elapsed time: (0.081354) s, performance: ( 1689.4) GFLOPS. size: (4096).
+=== kernel 4 ===
+Running kernel 4 on device 0.
+Device ID: 0
+    Name: Tesla P100-SXM2-16GB
+    Compute Capability: 6.0
+    memoryBusWidth: 4096
+    maxThreadsPerBlock: 1024
+    maxThreadsPerMultiProcessor: 2048
+    maxRegsPerBlock: 65536
+    maxRegsPerMultiProcessor: 65536
+    totalGlobalMem: 16280MB
+    sharedMemPerBlock: 48KB
+    sharedMemPerMultiprocessor: 64KB
+    totalConstMem: 64KB
+    l2CacheSize: 4096KB
+    multiProcessorCount: 56
+    Warp Size: 32
+Max size: 4096
+dimensions(m=n=k) 128, alpha: 0.5, beta: 3
+Average elapsed time: (0.000029) s, performance: (  144.7) GFLOPS. size: (128).
+dimensions(m=n=k) 256, alpha: 0.5, beta: 3
+Average elapsed time: (0.000055) s, performance: (  614.6) GFLOPS. size: (256).
+dimensions(m=n=k) 512, alpha: 0.5, beta: 3
+Average elapsed time: (0.000160) s, performance: ( 1681.3) GFLOPS. size: (512).
+dimensions(m=n=k) 1024, alpha: 0.5, beta: 3
+Average elapsed time: (0.000867) s, performance: ( 2477.8) GFLOPS. size: (1024).
+dimensions(m=n=k) 2048, alpha: 0.5, beta: 3
+Average elapsed time: (0.006074) s, performance: ( 2828.3) GFLOPS. size: (2048).
+dimensions(m=n=k) 4096, alpha: 0.5, beta: 3
+Average elapsed time: (0.047697) s, performance: ( 2881.5) GFLOPS. size: (4096).
+=== kernel 5 ===
+Running kernel 5 on device 0.
+Device ID: 0
+    Name: Tesla P100-SXM2-16GB
+    Compute Capability: 6.0
+    memoryBusWidth: 4096
+    maxThreadsPerBlock: 1024
+    maxThreadsPerMultiProcessor: 2048
+    maxRegsPerBlock: 65536
+    maxRegsPerMultiProcessor: 65536
+    totalGlobalMem: 16280MB
+    sharedMemPerBlock: 48KB
+    sharedMemPerMultiprocessor: 64KB
+    totalConstMem: 64KB
+    l2CacheSize: 4096KB
+    multiProcessorCount: 56
+    Warp Size: 32
+Max size: 4096
+dimensions(m=n=k) 128, alpha: 0.5, beta: 3
+Average elapsed time: (0.000084) s, performance: (   50.1) GFLOPS. size: (128).
+dimensions(m=n=k) 256, alpha: 0.5, beta: 3
+Average elapsed time: (0.000152) s, performance: (  221.0) GFLOPS. size: (256).
+dimensions(m=n=k) 512, alpha: 0.5, beta: 3
+Average elapsed time: (0.000271) s, performance: (  991.1) GFLOPS. size: (512).
+dimensions(m=n=k) 1024, alpha: 0.5, beta: 3
+Average elapsed time: (0.000858) s, performance: ( 2502.2) GFLOPS. size: (1024).
+dimensions(m=n=k) 2048, alpha: 0.5, beta: 3
+Average elapsed time: (0.004318) s, performance: ( 3978.8) GFLOPS. size: (2048).
+dimensions(m=n=k) 4096, alpha: 0.5, beta: 3
+Average elapsed time: (0.028401) s, performance: ( 4839.3) GFLOPS. size: (4096).
+=== kernel 6 ===
+Running kernel 6 on device 0.
+Device ID: 0
+    Name: Tesla P100-SXM2-16GB
+    Compute Capability: 6.0
+    memoryBusWidth: 4096
+    maxThreadsPerBlock: 1024
+    maxThreadsPerMultiProcessor: 2048
+    maxRegsPerBlock: 65536
+    maxRegsPerMultiProcessor: 65536
+    totalGlobalMem: 16280MB
+    sharedMemPerBlock: 48KB
+    sharedMemPerMultiprocessor: 64KB
+    totalConstMem: 64KB
+    l2CacheSize: 4096KB
+    multiProcessorCount: 56
+    Warp Size: 32
+Max size: 4096
+dimensions(m=n=k) 128, alpha: 0.5, beta: 3
+Average elapsed time: (0.000057) s, performance: (   73.2) GFLOPS. size: (128).
+dimensions(m=n=k) 256, alpha: 0.5, beta: 3
+Average elapsed time: (0.000112) s, performance: (  300.5) GFLOPS. size: (256).
+dimensions(m=n=k) 512, alpha: 0.5, beta: 3
+Average elapsed time: (0.000213) s, performance: ( 1257.8) GFLOPS. size: (512).
+dimensions(m=n=k) 1024, alpha: 0.5, beta: 3
+Average elapsed time: (0.000660) s, performance: ( 3256.0) GFLOPS. size: (1024).
+dimensions(m=n=k) 2048, alpha: 0.5, beta: 3
+Average elapsed time: (0.003455) s, performance: ( 4973.0) GFLOPS. size: (2048).
+dimensions(m=n=k) 4096, alpha: 0.5, beta: 3
+Average elapsed time: (0.024601) s, performance: ( 5586.7) GFLOPS. size: (4096).
+=== kernel 9 ===
+Running kernel 9 on device 0.
+Device ID: 0
+    Name: Tesla P100-SXM2-16GB
+    Compute Capability: 6.0
+    memoryBusWidth: 4096
+    maxThreadsPerBlock: 1024
+    maxThreadsPerMultiProcessor: 2048
+    maxRegsPerBlock: 65536
+    maxRegsPerMultiProcessor: 65536
+    totalGlobalMem: 16280MB
+    sharedMemPerBlock: 48KB
+    sharedMemPerMultiprocessor: 64KB
+    totalConstMem: 64KB
+    l2CacheSize: 4096KB
+    multiProcessorCount: 56
+    Warp Size: 32
+Max size: 4096
+dimensions(m=n=k) 128, alpha: 0.5, beta: 3
+Average elapsed time: (0.000052) s, performance: (   80.8) GFLOPS. size: (128).
+dimensions(m=n=k) 256, alpha: 0.5, beta: 3
+Average elapsed time: (0.000115) s, performance: (  292.1) GFLOPS. size: (256).
+dimensions(m=n=k) 512, alpha: 0.5, beta: 3
+Average elapsed time: (0.000221) s, performance: ( 1217.2) GFLOPS. size: (512).
+dimensions(m=n=k) 1024, alpha: 0.5, beta: 3
+Average elapsed time: (0.000669) s, performance: ( 3209.2) GFLOPS. size: (1024).
+dimensions(m=n=k) 2048, alpha: 0.5, beta: 3
+Average elapsed time: (0.003736) s, performance: ( 4598.8) GFLOPS. size: (2048).
+dimensions(m=n=k) 4096, alpha: 0.5, beta: 3
+Average elapsed time: (0.025135) s, performance: ( 5468.0) GFLOPS. size: (4096).
+=== kernel 10 ===
+Running kernel 10 on device 0.
+Device ID: 0
+    Name: Tesla P100-SXM2-16GB
+    Compute Capability: 6.0
+    memoryBusWidth: 4096
+    maxThreadsPerBlock: 1024
+    maxThreadsPerMultiProcessor: 2048
+    maxRegsPerBlock: 65536
+    maxRegsPerMultiProcessor: 65536
+    totalGlobalMem: 16280MB
+    sharedMemPerBlock: 48KB
+    sharedMemPerMultiprocessor: 64KB
+    totalConstMem: 64KB
+    l2CacheSize: 4096KB
+    multiProcessorCount: 56
+    Warp Size: 32
+Max size: 4096
+dimensions(m=n=k) 128, alpha: 0.5, beta: 3
+Average elapsed time: (0.000021) s, performance: (  203.4) GFLOPS. size: (128).
+dimensions(m=n=k) 256, alpha: 0.5, beta: 3
+Average elapsed time: (0.000037) s, performance: (  918.6) GFLOPS. size: (256).
+dimensions(m=n=k) 512, alpha: 0.5, beta: 3
+Average elapsed time: (0.000102) s, performance: ( 2631.9) GFLOPS. size: (512).
+dimensions(m=n=k) 1024, alpha: 0.5, beta: 3
+Average elapsed time: (0.000414) s, performance: ( 5182.5) GFLOPS. size: (1024).
+dimensions(m=n=k) 2048, alpha: 0.5, beta: 3
+Average elapsed time: (0.003109) s, performance: ( 5525.2) GFLOPS. size: (2048).
+dimensions(m=n=k) 4096, alpha: 0.5, beta: 3
+Average elapsed time: (0.024106) s, performance: ( 5701.4) GFLOPS. size: (4096).
