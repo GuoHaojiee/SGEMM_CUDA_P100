@@ -31,12 +31,12 @@ __global__ void __launch_bounds__(K9_NUM_THREADS)
   const uint cRow = blockIdx.y;
   const uint cCol = blockIdx.x;
 
-  // size of warptile
-  constexpr int WM = TM * 16;
-  constexpr int WN = TN * 16;
+  // size of warptile（constexpr → const，兼容 C++03）
+  const int WM = TM * 16;
+  const int WN = TN * 16;
   // iterations of warptile
-  constexpr int WMITER = CEIL_DIV(BM, WM);
-  constexpr int WNITER = CEIL_DIV(BN, WN);
+  const int WMITER = CEIL_DIV(BM, WM);
+  const int WNITER = CEIL_DIV(BN, WN);
 
   // Placement of the thread in the warptile
   const int threadCol = threadIdx.x % (WN / TN);
@@ -55,10 +55,10 @@ __global__ void __launch_bounds__(K9_NUM_THREADS)
   // we'll load 128bit / 32bit = 4 elements per thread at each step
   const uint innerRowA = threadIdx.x / (BK / 4);
   const uint innerColA = threadIdx.x % (BK / 4);
-  constexpr uint rowStrideA = (K9_NUM_THREADS * 4) / BK;
+  const uint rowStrideA = (K9_NUM_THREADS * 4) / BK;
   const uint innerRowB = threadIdx.x / (BN / 4);
   const uint innerColB = threadIdx.x % (BN / 4);
-  constexpr uint rowStrideB = K9_NUM_THREADS / (BN / 4);
+  const uint rowStrideB = K9_NUM_THREADS / (BN / 4);
 
   // allocate thread-local cache for results in registerfile
   float threadResults[WMITER * WNITER * TM * TN] = {0.0};

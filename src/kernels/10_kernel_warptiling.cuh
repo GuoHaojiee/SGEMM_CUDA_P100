@@ -128,10 +128,10 @@ __global__ void __launch_bounds__(NUM_THREADS)
   const uint warpCol = warpIdx % (BN / WN);
   const uint warpRow = warpIdx / (BN / WN);
 
-  // size of the warp subtile
-  constexpr uint WMITER = (WM * WN) / (WARPSIZE * TM * TN * WNITER);
-  constexpr uint WSUBM = WM / WMITER; // 64/2=32
-  constexpr uint WSUBN = WN / WNITER; // 32/2=16
+  // size of the warp subtile（constexpr → const，兼容 C++03）
+  const uint WMITER = (WM * WN) / (WARPSIZE * TM * TN * WNITER);
+  const uint WSUBM = WM / WMITER; // 64/2=32
+  const uint WSUBN = WN / WNITER; // 32/2=16
 
   // Placement of the thread in the warp subtile
   const uint threadIdxInWarp = threadIdx.x % WARPSIZE;         // [0, 31]
@@ -152,10 +152,10 @@ __global__ void __launch_bounds__(NUM_THREADS)
   // we'll load 128bit / 32bit = 4 elements per thread at each step
   const uint innerRowA = threadIdx.x / (BK / 4);
   const uint innerColA = threadIdx.x % (BK / 4);
-  constexpr uint rowStrideA = (NUM_THREADS * 4) / BK;
+  const uint rowStrideA = (NUM_THREADS * 4) / BK;
   const uint innerRowB = threadIdx.x / (BN / 4);
   const uint innerColB = threadIdx.x % (BN / 4);
-  constexpr uint rowStrideB = NUM_THREADS / (BN / 4);
+  const uint rowStrideB = NUM_THREADS / (BN / 4);
 
   // allocate thread-local cache for results in registerfile
   float threadResults[WMITER * TM * WNITER * TN] = {0.0};
