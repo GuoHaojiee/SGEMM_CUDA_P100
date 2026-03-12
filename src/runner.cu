@@ -2,6 +2,7 @@
 #include "runner.cuh"
 #include <cmath>
 #include <cstdio>
+#include <cstring>
 #include <fstream>
 #include <iomanip>
 
@@ -26,7 +27,8 @@ void CudaDeviceInfo() {
   int deviceId;
   cudaGetDevice(&deviceId);
 
-  cudaDeviceProp props{};
+  cudaDeviceProp props;
+  memset(&props, 0, sizeof(props));
   cudaGetDeviceProperties(&props, deviceId);
 
   printf("Device ID: %d\n\
@@ -61,8 +63,9 @@ void CudaDeviceInfo() {
 
 void randomize_matrix(float *mat, int N) {
   // 使用 gettimeofday 而非 srand(time(NULL))，精度更高，避免重复随机数
-  struct timeval time {};
-  gettimeofday(&time, nullptr);
+  struct timeval time;
+  memset(&time, 0, sizeof(time));
+  gettimeofday(&time, NULL);
   srand(time.tv_usec);
   for (int i = 0; i < N; i++) {
     float tmp = (float)(rand() % 5) + 0.01 * (rand() % 5);
